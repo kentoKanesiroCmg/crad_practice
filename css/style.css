@@ -1,0 +1,39 @@
+body {
+    width: 100%;
+}
+
+section {
+    margin-top: 20px;
+    /* width: 1000px; */
+    width: 70%;
+    margin: 0 auto;
+    background-color: burlywood;
+}
+
+h2 {
+    text-align: center;
+}
+
+.confirm {
+    background-color: rgb(74, 194, 241);
+}
+.table {
+    margin-top: 30px;
+}
+.tableclass table {
+    margin: 0 auto;
+    width: 50%;
+    background-color: white;
+    table-layout: fixed;
+}
+.tableclass table, .tableclass td, .tableclass tr, .tableclass th {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+.tableclass th {
+    background-color: rgb(134, 110, 110);
+}
+
+button {
+    margin: 0 10px;
+}
