@@ -1,21 +1,42 @@
 <?php
 
+// $AAA = ['a','b','c'];
+// var_dump($AAA);
+// echo $AAA[1];
+
+// echo "<br>";
+// $BBB = ['key1'=>'a','key2'=>'b','key3'=>'c'];
+// var_dump($BBB);
+// echo $BBB['key2'];
 
 
 
+require_once('./config.php');
+require_once('./connection.php');
 
-$ary =[
-    0 =>[
-        'product'=>'歯磨き',
-        'price'=>'100',
-        'count'=>'5'
-    ],
-    1 =>[
-        'product'=>'歯磨き',
-        'price'=>null,
-        'count'=>'5'
-    ]
-];
+$dbdata = selectTodoData();
+
+if(isset($dbdata)){
+    // echo '<pre>';
+    // var_dump($dbdata);
+    // echo '</pre>';
+    $ary = $dbdata;
+}
+
+
+
+// $ary =[
+//     0 =>[
+//         'product'=>'歯磨き',
+//         'price'=>'100',
+//         'count'=>'5'
+//     ],
+//     1 =>[
+//         'product'=>'歯磨き',
+//         'price'=>null,
+//         'count'=>'5'
+//     ]
+// ];
 
 ?>
 
@@ -33,27 +54,13 @@ $ary =[
                 <table>
                     <thead>
                         <th>商品名</th>
-                        <th>値段</th>
-                        <th>個数</th>
                     </thead>
                     <tbody>
                         <?php foreach($ary as $key => $value){ ?>
                             <tr>
                                 <td>
-                                    <?php if(isset($value['product'])) {?>
-                                        <?= $value['product'] ?>
-                                    <?php }?>
-                                </td>
-                                <td>
-                                    <?php if(!empty($value['price'])) {?>
-                                        <?= $value['price'] ?>円
-                                    <?php }else{?>
-                                        0円
-                                    <?php }?>
-                                </td>
-                                <td>
-                                    <?php if(isset($value['count'])) {?>
-                                        <?= $value['count'] ?>
+                                    <?php if(isset($value['name'])) {?>
+                                        <?= $value['name'] ?>
                                     <?php }?>
                                 </td>
                             </tr>

@@ -1,6 +1,7 @@
 <?php
-
-
+// echo'<pre>';
+// var_dump($_SERVER);
+// echo'</pre>';
 
 $vali_flg=false;
 if($_POST){
@@ -37,23 +38,9 @@ if($_POST){
                         <?= $_POST['name'] ?>
                     </td>
                 </tr>
-                <tr>
-                    <th>値段：</th>
-                    <td>
-                        <?= $_POST['price'] ?>円
-                    </td>
-                </tr>
-                <tr>
-                <th>個数：</th>
-                    <td>
-                        <?= $_POST['count'] ?>個
-                    </td>
-                </tr>
             </table>
             <form action="./complete.php" method="post">
             <input type="hidden" name="name" value="<?= $_POST['name'] ?>">
-            <input type="hidden" name="price" value="<?= $_POST['price'] ?>">
-            <input type="hidden" name="count" value="<?= $_POST['count'] ?>">
             <div>
                 <button type="submit" >登録</button>
                 <a href="<?= $_SERVER['HTTP_REFERER'] ?>">戻る</a>

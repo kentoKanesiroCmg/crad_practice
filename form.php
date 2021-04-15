@@ -22,21 +22,10 @@
                             <input type="text" name="name" value="">
                         </td>
                     </tr>
-                    <tr>
-                        <th>値段：</th>
-                        <td>
-                            <input type="text" name="price" value="">
-                        </td>
-                    </tr>
-                    <tr>
-                    <th>個数：</th>
-                        <td>
-                            <input type="number" name="count" value="">
-                        </td>
-                    </tr>
                 </table>
                 <div>
                     <button type="submit" >確認</button>
+                    <a href="<?= $_SERVER['HTTP_REFERER'] ?>">戻る</a>
                 </div>
             </form>
         </div>
