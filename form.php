@@ -1,5 +1,11 @@
 <?php
-// phpinfo();exit;
+require_once('./connection.php');
+
+$update_flg=false;
+if(isset($_GET['id']) && $_GET['id']>0){
+    $result = selectTodoByIdData($_GET['id']);
+    $update_flg=true;
+}
 
 
 ?>
@@ -19,24 +25,18 @@
                     <tr>
                         <th>商品名：</th>
                         <td>
+                        <?php if($update_flg == true){ ?>
+                            <input type="hidden" name="id" value="<?= $result['id'] ?>">
+                            <input type="text" name="name" value="<?= $result['name'] ?>">
+                        <?php }else{ ?>
                             <input type="text" name="name" value="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>値段：</th>
-                        <td>
-                            <input type="text" name="price" value="">
-                        </td>
-                    </tr>
-                    <tr>
-                    <th>個数：</th>
-                        <td>
-                            <input type="number" name="count" value="">
+                        <?php } ?>
                         </td>
                     </tr>
                 </table>
                 <div>
                     <button type="submit" >確認</button>
+                    <a href="/">戻る</a>
                 </div>
             </form>
         </div>

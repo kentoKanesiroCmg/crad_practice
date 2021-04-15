@@ -1,21 +1,21 @@
 <?php
+    require_once('./connection.php');
 
+    //削除
+    if($_GET['delflg']==1 && $_GET['id'] > 0){
+        $result = deleteTodoData($_GET['id']);
+        if($result){
+        }
+    }
 
+    $dbdata = selectTodoData();
 
-
-
-$ary =[
-    0 =>[
-        'product'=>'歯磨き',
-        'price'=>'100',
-        'count'=>'5'
-    ],
-    1 =>[
-        'product'=>'歯磨き',
-        'price'=>null,
-        'count'=>'5'
-    ]
-];
+    if(isset($dbdata)){
+        // echo '<pre>';
+        // var_dump($dbdata);
+        // echo '</pre>';
+        $ary = $dbdata;
+    }
 
 ?>
 
@@ -33,28 +33,18 @@ $ary =[
                 <table>
                     <thead>
                         <th>商品名</th>
-                        <th>値段</th>
-                        <th>個数</th>
                     </thead>
                     <tbody>
                         <?php foreach($ary as $key => $value){ ?>
                             <tr>
                                 <td>
-                                    <?php if(isset($value['product'])) {?>
-                                        <?= $value['product'] ?>
+                                    <?php if(isset($value['name'])) {?>
+                                        <?= $value['name'] ?>
                                     <?php }?>
-                                </td>
-                                <td>
-                                    <?php if(!empty($value['price'])) {?>
-                                        <?= $value['price'] ?>円
-                                    <?php }else{?>
-                                        0円
-                                    <?php }?>
-                                </td>
-                                <td>
-                                    <?php if(isset($value['count'])) {?>
-                                        <?= $value['count'] ?>
-                                    <?php }?>
+                                    <div class='f-right'>
+                                    <a href="./form.php?id=<?= $value['id'] ?>"><button>更新</button></a>
+                                    <a href="index.php?delflg=1&id=<?= $value['id'] ?>"><button>削除</button></a>
+                                    </div>
                                 </td>
                             </tr>
                         <?php } ?>
