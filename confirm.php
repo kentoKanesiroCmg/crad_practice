@@ -3,7 +3,6 @@
 
     $submit_str = '新規登録';
     $pram_id= '';
-
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(!empty($_POST['id'])){
             $submit_str = '更新';

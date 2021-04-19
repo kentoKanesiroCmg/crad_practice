@@ -1,5 +1,6 @@
 <?php
 require_once('./config.php');
+require_once('./function.php');
 
 function connectPdo(){
     try {
@@ -33,7 +34,8 @@ function createTodoData($post){
 function selectTodoData(){
     $dbh = connectPdo();
     $sql = 'select * from test';
-    $result = $dbh->query($sql)->fetchAll();
+    $stmt = $dbh->query($sql);
+    $result = $stmt->fetchAll();
     return $result;
 }
 
@@ -45,10 +47,15 @@ function selectTodoData(){
 function selectTodoByIdData($id){
     $dbh = connectPdo();
     $sql = 'select * from test where id = :id';
+
+    // $stmt = $dbh->query($sql);
+    // $result = $stmt->fetchAll();
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':id',(int)$id, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetch();
+    
+    
     return $result;
 }
 

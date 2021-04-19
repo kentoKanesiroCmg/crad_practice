@@ -1,6 +1,15 @@
 <?php
-require_once('./config.php');
 require_once('./connection.php');
+
+
+if(isset($_POST['name'])){
+    $str_flg = validStr($_POST['name']);
+    if(!$str_flg){
+        // リダイレクト処理
+        header('Location: http://localhost/form.php');
+        exit;
+    }
+}
 
 $result = false;
 if(empty($_POST['id'])){
