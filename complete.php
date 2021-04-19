@@ -9,7 +9,7 @@ require_once('./connection.php');
 selectTodoData();
 var_dump($_POST);
 
-if(isset($_POST->name)){
+if(empty($_POST['update'])){
     createTodoData($_POST);
     
     // echo('aaaaaaaaaaaaaaa');
@@ -19,9 +19,7 @@ if(isset($_POST->name)){
     // var_dump($_POST);
     // exit;
 
-}
-
-if(isset($_POST->newname)){
+}else {
     updateTodoData($_POST);
     
     // echo('aaaaaaaaaaaaaaa');

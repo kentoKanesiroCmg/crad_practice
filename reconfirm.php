@@ -44,6 +44,7 @@ if($_POST){
                 </tr>
             </table>
             <form action="./complete.php" method="post">
+            <input type="hidden" name="update" value="1">
             <input type="hidden" name="name" value="<?= $_POST['name'] ?>">
             <input type="hidden" name="newname" value="<?= $_POST['newname'] ?>">
             <div>

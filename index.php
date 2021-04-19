@@ -1,5 +1,6 @@
 <?php
 
+
 // $AAA = ['a','b','c'];
 // var_dump($AAA);
 // echo $AAA[1];
@@ -69,6 +70,9 @@ if(isset($dbdata)){
                 </table>
                 <div>
                     <a class="form-button" href="./form.php">入力画面へ</a>
+                </div>
+                <div>
+                    <a class="form-button" href="./reform.php">変更画面へ</a>
                 </div>
             </div>            
         </section>

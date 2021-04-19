@@ -47,14 +47,13 @@ function selectTodoData(){
 }
 
 //UPDATE追加用に書いたもの
-// function updateTodoData($post){
-//     $dbh = connectPdo();
-// // ------
-//     $sql = 'update test2 set name=:newname where name=:name';
-//     $stmt = $dbh->prepare($sql);
-//     $stmt->bindValue(':newname',$post['newname'], PDO::PARAM_STR);
-//     $stmt->bindValue(':name',$post['name'], PDO::PARAM_STR);
-//     $stmt->execute();
-//     return $result;
+function updateTodoData($post){
+    $dbh = connectPdo();
+    $sql = 'update test2 set name=:newname where name=:name';
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':newname',$post['newname'], PDO::PARAM_STR);
+    $stmt->bindValue(':name',$post['name'], PDO::PARAM_STR);
 
-// }
+    $stmt->execute();
+
+}
