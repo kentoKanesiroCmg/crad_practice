@@ -9,27 +9,19 @@ require_once('./connection.php');
 selectTodoData();
 var_dump($_POST);
 
-if(empty($_POST['update'])){
-    createTodoData($_POST);
-    
-    // echo('aaaaaaaaaaaaaaa');
-    // exit;
-    // 登録処理
-
-    // var_dump($_POST);
-    // exit;
-
-}else {
+if(isset($_POST['update'])){
+    //全更新
     updateTodoData($_POST);
     
-    // echo('aaaaaaaaaaaaaaa');
-    // exit;
-    // 登録処理
+}elseif(isset($_POST['id'])) {
+    //一部更新
+    updateTodoData2($_POST);
 
-    // var_dump($_POST);
-    // exit;
-
+}else {
+    //新規追加
+    createTodoData($_POST);
 }
+
 ?>
     <div>
         <a class="form-button" href="./index.php">TOP画面へ</a>

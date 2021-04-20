@@ -1,4 +1,6 @@
 <?php
+
+var_dump($_POST);
 // echo'<pre>';
 // var_dump($_SERVER);
 // echo'</pre>';
@@ -40,11 +42,14 @@ if($_POST){
                 </tr>
             </table>
             <form action="./complete.php" method="post">
-            <input type="hidden" name="name" value="<?= $_POST['name'] ?>">
-            <div>
-                <button type="submit" >登録</button>
-                <a href="<?= $_SERVER['HTTP_REFERER'] ?>">戻る</a>
-            </div>
+                <input type="hidden" name="name" value="<?= $_POST['name'] ?>">
+                <?php if(isset($_POST['id'])) { ?>
+                <input type="hidden" name="id" value="<?= $_POST['id'] ?>">
+                <?php } ?>
+                    <div>
+                    <button type="submit" >登録</button>
+                    <a href="<?= $_SERVER['HTTP_REFERER'] ?>">戻る</a>
+                    </div>
             </form>
         </div>
     </section>

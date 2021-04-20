@@ -1,43 +1,17 @@
 <?php
 
-
-// $AAA = ['a','b','c'];
-// var_dump($AAA);
-// echo $AAA[1];
-
-// echo "<br>";
-// $BBB = ['key1'=>'a','key2'=>'b','key3'=>'c'];
-// var_dump($BBB);
-// echo $BBB['key2'];
-
-
-
 require_once('./config.php');
 require_once('./connection.php');
+
+if($_GET['delflg']==1) {
+    deleteTodoData($_GET['id']);
+}
 
 $dbdata = selectTodoData();
 
 if(isset($dbdata)){
-    // echo '<pre>';
-    // var_dump($dbdata);
-    // echo '</pre>';
     $ary = $dbdata;
 }
-
-
-
-// $ary =[
-//     0 =>[
-//         'product'=>'歯磨き',
-//         'price'=>'100',
-//         'count'=>'5'
-//     ],
-//     1 =>[
-//         'product'=>'歯磨き',
-//         'price'=>null,
-//         'count'=>'5'
-//     ]
-// ];
 
 ?>
 
@@ -62,6 +36,8 @@ if(isset($dbdata)){
                                 <td>
                                     <?php if(isset($value['name'])) {?>
                                         <?= $value['name'] ?>
+                                        <a class="form-button" href="./form.php?id=<?= $value['id'] ?>">更新</a>
+                                        <a class="form-button" href="./index.php?delflg=1&id=<?= $value['id'] ?>">削除</a>
                                     <?php }?>
                                 </td>
                             </tr>
