@@ -1,4 +1,5 @@
 <?php
+require_once('./session.php');
 require_once('./config.php');
 require_once('./function.php');
 
@@ -19,7 +20,7 @@ function connectPdo(){
 */
 function createTodoData($post){
     $dbh = connectPdo();
-    $sql = 'insert into test (id,name)values(0,:name)';
+    $sql = 'insert into test (id,name,del_flg)values(0,:name,0)';
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':name',$post['name'], PDO::PARAM_STR);
     $result = $stmt->execute();
@@ -67,7 +68,7 @@ function selectTodoByIdData($id){
 */
 function updateTodoData($post){
     $dbh = connectPdo();
-    $sql = 'update test set name = :name where id = :id';
+    $sql = 'update test set name = :name where id = :id and del_flg = 0';
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':name',$post['name'], PDO::PARAM_STR);
     $stmt->bindValue(':id',(int)$post['id'], PDO::PARAM_INT);

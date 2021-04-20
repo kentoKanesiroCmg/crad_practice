@@ -7,7 +7,6 @@ if(isset($_GET['id']) && $_GET['id']>0){
     $update_flg=true;
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +21,11 @@ if(isset($_GET['id']) && $_GET['id']>0){
         <div class="table">
             <form action="./confirm.php" method="post">
                 <table>
+                <div class="error-message">
+                    <?php if(isset($_SESSION['error_msg'])) {?>
+                        <?= $_SESSION['error_msg'] ?>
+                    <?php } ?>
+                </div>
                     <tr>
                         <th>商品名：</th>
                         <td>
@@ -36,7 +40,7 @@ if(isset($_GET['id']) && $_GET['id']>0){
                 </table>
                 <div>
                     <button type="submit" >確認</button>
-                    <a href="/">戻る</a>
+                    <button><a href="/">戻る</a></button>
                 </div>
             </form>
         </div>

@@ -43,3 +43,12 @@ button {
 .f-right {
     float: right;
 }
+
+.error-message {
+    color: red;
+    font-weight: bolder;
+}
+
+a {
+    text-decoration: none;
+}

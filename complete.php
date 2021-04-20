@@ -1,14 +1,18 @@
 <?php
 require_once('./connection.php');
 
-
 if(isset($_POST['name'])){
     $str_flg = validStr($_POST['name']);
     if(!$str_flg){
+        empty($_POST['id']) ? $param = '' : $param = '?id='.$_POST['id'] ;
         // リダイレクト処理
-        header('Location: http://localhost/form.php');
+        header('Location: http://localhost/form.php'.$param);
         exit;
     }
+}else{
+    // リダイレクト処理
+    header('Location: http://localhost/');
+    exit;
 }
 
 $result = false;

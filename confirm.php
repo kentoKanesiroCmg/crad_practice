@@ -10,7 +10,7 @@
         }
     }else{
         // リダイレクト処理
-        header('Location: http://localhost/form.php');
+        header('Location: http://localhost/index.php');
         exit;
     }
 
@@ -43,7 +43,7 @@
             <input type="hidden" name="name" value="<?= $_POST['name'] ?>">
             <div>
                 <button type="submit" ><?= $submit_str ?></button>
-                <a href="./form.php<?= $pram_id ?>">戻る</a>
+                <a href="./form.php<?= $pram_id ?>"><button type="button">戻る</button></a>
             </div>
             </form>
         </div>
