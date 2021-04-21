@@ -35,7 +35,7 @@ if(isset($_GET['id'])) {
                 </table>
                 <div>
                     <button type="submit" >確認</button>
-                    <a href="<?= $_SERVER['HTTP_REFERER'] ?>">戻る</a>
+                    <a href="http://localhost/index.php">戻る</a>
                 </div>
             </form>
         </div>

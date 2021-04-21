@@ -35,7 +35,7 @@ if(isset($dbdata)){
                             <tr>
                                 <td>
                                     <?php if(isset($value['name'])) {?>
-                                        <?= $value['name'] ?>
+                                        <?= htmlspecialchars($value['name'],  ENT_QUOTES, "UTF-8") ?>
                                         <a class="form-button" href="./form.php?id=<?= $value['id'] ?>">更新</a>
                                         <a class="form-button" href="./index.php?delflg=1&id=<?= $value['id'] ?>">削除</a>
                                     <?php }?>
