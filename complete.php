@@ -1,5 +1,6 @@
 <?php
 require_once('./connection.php');
+// error_log(var_export($_POST,true));
 
 if(isset($_POST['name'])){
     $str_flg = validStr($_POST['name']);

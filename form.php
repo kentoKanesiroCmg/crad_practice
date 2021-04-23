@@ -13,6 +13,7 @@ if(isset($_GET['id']) && $_GET['id']>0){
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>入力画面</title>
 </head>
@@ -45,6 +46,7 @@ if(isset($_GET['id']) && $_GET['id']>0){
             </form>
         </div>
     </section>
-
+    <!-- footer -->
+    <?php  require_once('./part/footer.php'); ?>
 </body>
 </html>

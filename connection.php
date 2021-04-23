@@ -90,3 +90,68 @@ function deleteTodoData($id){
     $result = $stmt->execute();
     return $result;
 }
+
+
+/**
+* ユーザーテーブルに新規作成する
+*
+* @param array $post
+* @return array $result
+*/
+function createUserData($post){
+    //パスワードのハッシュ化
+    $hash_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $dbh = connectPdo();
+    $sql = 'insert into user (id,name,password,sex,del_flg)values(0,:name,:password,:sex,false)';
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':name',$post['name'], PDO::PARAM_STR);
+    $stmt->bindValue(':password',$hash_pass, PDO::PARAM_STR);
+    $stmt->bindValue(':sex',$post['sex'], PDO::PARAM_INT);
+    $result['result'] = $stmt->execute();
+    $result['id'] = $dbh->lastInsertId(); 
+    return $result;
+
+}
+/**
+* ログイン処理
+*
+* @param array $post
+* @return array $result
+*/
+function selectUserByidPassData($post){
+    //パスワードのハッシュ化
+    $dbh = connectPdo();
+    $sql = 'select * from user where id=:id and del_flg = false';
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':id',$post['id'], PDO::PARAM_INT);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    
+    $ary =['result'=>false];
+    if(isset($result)){
+        $result_hash = password_verify($post['password'],$result['password']);
+        if($result_hash){
+            $ary =['result'=>true,'id'=>$result['id']];
+        }
+    }
+
+    return $ary;
+}
+
+/**
+* セッション情報からログインユーザー名を取得する
+*
+* @return string
+*/
+function getLoginUser(){
+    $login_user="";
+    if(isset($_SESSION['login_id'])){
+        $dbh = connectPdo();
+        $sql = 'select name from user where id=:id and del_flg = false';
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':id',$_SESSION['login_id'], PDO::PARAM_INT);
+        $stmt->execute();
+        $login_user = $stmt->fetch();
+    }
+    return $login_user['name'];
+}

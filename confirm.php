@@ -20,6 +20,7 @@
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>確認画面</title>
 </head>
@@ -31,16 +32,16 @@
                 <tr>
                     <th>商品名：</th>
                     <td>
-                        <?= $_POST['name'] ?>
+                        <?= htmlspecialchars($_POST['name']) ?>
                     </td>
                 </tr>
 
             </table>
             <form action="./complete.php" method="post">
             <?php if(!empty($_POST['id'])){?>
-            <input type="hidden" name="id" value="<?= $_POST['id'] ?>">
+                <input type="hidden" name="id" value="<?= htmlspecialchars($_POST['id']) ?>">
             <?php }?>
-            <input type="hidden" name="name" value="<?= $_POST['name'] ?>">
+            <input type="hidden" name="name" value="<?= htmlspecialchars($_POST['name']) ?>">            
             <div>
                 <button type="submit" ><?= $submit_str ?></button>
                 <a href="./form.php<?= $pram_id ?>"><button type="button">戻る</button></a>
