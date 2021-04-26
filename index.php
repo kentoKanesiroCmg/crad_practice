@@ -1,6 +1,6 @@
 <?php
 
-//git変更確認用
+//git変更確認
 
 require_once('./config.php');
 require_once('./connection.php');
