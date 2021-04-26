@@ -1,11 +1,18 @@
 <?php
 
 require_once('./validation.php');
+require_once('./session.php');
 
+// var_dump($_POST);
+
+foreach($_POST as $key => $value){
+    if($key != 'id'){
+    $post[] = $value;
+    }
+}
 if(isset($_POST['name']) && isset($_POST['newname'])) {
-    $str_flg1 = validation_strlen($_POST['name']);
-    $str_flg2 = validation_strlen($_POST['newname']);
-    if(!$str_flg1 || !$str_flg2) {
+    $str_flg = validation_strlen($post);
+    if(!$str_flg) {
         header("Location: http://localhost/reform.php");
         exit;
     }

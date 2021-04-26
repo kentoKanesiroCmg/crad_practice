@@ -2,6 +2,7 @@
 
 require_once('./config.php');
 require_once('./connection.php');
+require_once('./session.php');
 
 if($_GET['delflg']==1) {
     deleteTodoData($_GET['id']);

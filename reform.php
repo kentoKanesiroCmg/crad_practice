@@ -1,5 +1,9 @@
 <?php
 
+require_once('./config.php');
+require_once('./connection.php');
+require_once('./session.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +15,16 @@
 </head>
 <body>
     <section>
+        <div class="error_msg">
+            <?php 
+                if(isset($_SESSION['error_msg'])) {
+                    foreach($_SESSION['error_msg'] as $value){
+                        echo $value;
+                        echo '<br>';
+                    }
+                }
+            ?>
+        </div>
         <div class="table">
             <form action="./reconfirm.php" method="post">
                 <table>
@@ -32,6 +46,5 @@
             </form>
         </div>
     </section>
-
 </body>
 </html>

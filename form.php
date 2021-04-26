@@ -2,10 +2,13 @@
 
 require_once('./config.php');
 require_once('./connection.php');
+require_once('./session.php');
 
 if(isset($_GET['id'])) {
     $result = selectTodoByIdData($_GET['id']);
 }
+
+// var_dump($_SESSION['error_msg']);
 
 ?>
 
@@ -18,6 +21,15 @@ if(isset($_GET['id'])) {
 </head>
 <body>
     <section>
+        <div class="error_msg">
+            <?php 
+                if(isset($_SESSION['error_msg'])) {
+                    foreach($_SESSION['error_msg'] as $value){
+                        echo $value;
+                    }
+                }
+            ?>
+        </div>
         <div class="table">
             <form action="./confirm.php" method="post">
                 <table>
@@ -25,8 +37,8 @@ if(isset($_GET['id'])) {
                         <th>商品名：</th>
                         <td>
                         <?php if(isset($result['id'])) {?>
-                            <input type="text" name="name" value= "<?= $result['name']?>">
-                            <input type="hidden" name="id" value= "<?= $result['id']?>">
+                            <input type="text" name="name" value= "<?= htmlspecialchars($result['name'],  ENT_QUOTES, "UTF-8")?>">
+                            <input type="hidden" name="id" value= "<?= htmlspecialchars($result['id'],  ENT_QUOTES, "UTF-8")?>">
                         <?php }else { ?>
                             <input type="text" name="name" value="">
                             <?php } ?>
