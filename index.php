@@ -3,6 +3,8 @@
 //git変更確認
 //git変更確認を変更用に再変更します。
 
+
+
 require_once('./config.php');
 require_once('./connection.php');
 require_once('./session.php');
