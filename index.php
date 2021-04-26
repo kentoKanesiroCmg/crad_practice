@@ -1,6 +1,7 @@
 <?php
 
 //git変更確認
+//gitコンフリクト発生
 
 require_once('./config.php');
 require_once('./connection.php');
