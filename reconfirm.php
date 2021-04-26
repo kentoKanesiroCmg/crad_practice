@@ -1,5 +1,7 @@
 <?php
 
+//git変更確認
+
 require_once('./validation.php');
 require_once('./session.php');
 

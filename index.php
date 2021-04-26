@@ -2,6 +2,13 @@
 
 //git変更確認
 //gitコンフリクト発生
+//git変更確認を変更用に再変更します。
+// git 
+//git変更確認を変更用にtest
+//  追記
+
+
+
 
 require_once('./config.php');
 require_once('./connection.php');
