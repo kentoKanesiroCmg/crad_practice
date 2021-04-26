@@ -1,6 +1,6 @@
 <?php
 
-//git変更確認
+//git変更確認　パート２
 
 require_once('./validation.php');
 require_once('./session.php');
