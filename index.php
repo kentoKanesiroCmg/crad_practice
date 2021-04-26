@@ -1,21 +1,18 @@
 <?php
 
+require_once('./config.php');
+require_once('./connection.php');
+require_once('./session.php');
 
+if($_GET['delflg']==1) {
+    deleteTodoData($_GET['id']);
+}
 
+$dbdata = selectTodoData();
 
-
-$ary =[
-    0 =>[
-        'product'=>'歯磨き',
-        'price'=>'100',
-        'count'=>'5'
-    ],
-    1 =>[
-        'product'=>'歯磨き',
-        'price'=>null,
-        'count'=>'5'
-    ]
-];
+if(isset($dbdata)){
+    $ary = $dbdata;
+}
 
 ?>
 
@@ -33,27 +30,15 @@ $ary =[
                 <table>
                     <thead>
                         <th>商品名</th>
-                        <th>値段</th>
-                        <th>個数</th>
                     </thead>
                     <tbody>
                         <?php foreach($ary as $key => $value){ ?>
                             <tr>
                                 <td>
-                                    <?php if(isset($value['product'])) {?>
-                                        <?= $value['product'] ?>
-                                    <?php }?>
-                                </td>
-                                <td>
-                                    <?php if(!empty($value['price'])) {?>
-                                        <?= $value['price'] ?>円
-                                    <?php }else{?>
-                                        0円
-                                    <?php }?>
-                                </td>
-                                <td>
-                                    <?php if(isset($value['count'])) {?>
-                                        <?= $value['count'] ?>
+                                    <?php if(isset($value['name'])) {?>
+                                        <?= htmlspecialchars($value['name'],  ENT_QUOTES, "UTF-8") ?>
+                                        <a class="form-button" href="./form.php?id=<?= $value['id'] ?>">更新</a>
+                                        <a class="form-button" href="./index.php?delflg=1&id=<?= $value['id'] ?>">削除</a>
                                     <?php }?>
                                 </td>
                             </tr>
@@ -62,6 +47,9 @@ $ary =[
                 </table>
                 <div>
                     <a class="form-button" href="./form.php">入力画面へ</a>
+                </div>
+                <div>
+                    <a class="form-button" href="./reform.php">変更画面へ</a>
                 </div>
             </div>            
         </section>
